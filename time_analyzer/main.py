@@ -2,6 +2,8 @@ import time_calculator
 import time_parser
 import os
 
+first_peak, second_peak, ground = input("Enter wave length for first peak:"),  input("Enter wave length for first peak:")
+
 def analyzer():
 
     file_names = os.listdir(r"C:\Users\roman\OneDrive\Рабочий стол\SFU\Zagrebaev-28-04-2023\Ph-(2a)")

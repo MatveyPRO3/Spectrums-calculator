@@ -7,5 +7,5 @@ with open("result.txt", "r") as file:
         x.append(float(i.split("|")[1]))
         y.append(float(i.split("|")[-1]))
 
-#fig = px.scatter(x=x, y=y)
-#fig.show()
+fig = px.scatter(x=x, y=y)
+fig.show()

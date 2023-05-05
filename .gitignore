@@ -1,2 +1,5 @@
 .vscode/
 **/__pycache__/
+spectrums/
+xy.txt
+result.txt

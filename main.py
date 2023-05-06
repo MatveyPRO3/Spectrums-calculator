@@ -2,12 +2,22 @@ import time_calculator
 import time_parser
 import os
 
-path = input("Enter full directory path with slash at the end: (put all spectrums there)")
+path = input(
+    "Enter full directory path with slash at the end: (put all spectrums there)"
+)
 
 first_peak, second_peak, base_line = (
-    float(input("Enter wave length for first(left) peak:")),
-    float(input("Enter wave length for second(right) peak:")),
-    float(input("Enter wave length for base line")),
+    float(
+        input(
+            "Enter wave length for first(left) peak (you can only choose from existing in file wave lengths!):"
+        )
+    ),
+    float(
+        input(
+            "Enter wave length for second(right) peak (you can only choose from existing in file wave lengths!):"
+        )
+    ),
+    float(input("Enter wave length for base line: ")),
 )
 
 
@@ -22,7 +32,7 @@ def analyzer():
     for f_n in file_names:
         print("Processing", f_n, end=" ")
         try:
-            with open(path+f_n, "r") as opened_file:
+            with open(path + f_n, "r") as opened_file:
                 lines = opened_file.readlines()
                 lines = {
                     float(l.split(",")[0]): float(l.split(",")[1]) for l in lines
@@ -37,10 +47,12 @@ def analyzer():
 
     print("Collected points:")
     print(points)
-    result = [(p[0] - p[2]) / (p[1] - p[2]) for p in points]
+    result = [(p[1] - p[2]) / (p[0] - p[2]) for p in points]
 
     with open("result.txt", "w") as file:
-        file.write("[file name]|[reaction time]|[left peak, right peak, base line]|[ratio]\n")
+        file.write(
+            "[file name]|[reaction time]|[left peak, right peak, base line]|[ratio]\n"
+        )
         for i in range(len(points)):
             file.write(
                 f"{file_names[i]}|{str(times[i])}|{str(points[i])}|{result[i]} \n"

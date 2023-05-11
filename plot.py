@@ -1,7 +1,7 @@
 import plotly.express as px
 
 x, y = [], []
-with open("result.txt", "r") as file:
+with open(input("Enter result.txt path"), "r") as file:
     for i in file.readlines():
         print(i)
         x.append(float(i.split("|")[1]))
